@@ -7,6 +7,7 @@ public class Collectables : MonoBehaviour
 {
     static int score;
     public TMP_Text scoreText;
+    public TMP_Text timerText;
 
 
     void OnTriggerEnter(Collider other)
