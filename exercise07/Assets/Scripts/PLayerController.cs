@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PLayerController : MonoBehaviour
+
+public class PlayerController : MonoBehaviour
 {
 
     public CharacterController theCC;
-
-    public Animator animator;
-    public Animator secondAnimator;
+    public float speed = 20;
+    public float rotationSpeed = 90;
+    //public Animator animator;
+    //public Animator secondAnimator;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,20 +25,22 @@ public class PLayerController : MonoBehaviour
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
 
-        transform.Rotate(0, 80 * hAxis * Time.deltaTime, 0);
 
-        if (Mathf.Abs(vAxis) > 0)
-        {
-            animator.SetBool("walking", true);
-            secondAnimator.SetBool("walking", true);
-        }
-        else
-        {
-            animator.SetBool("walking", false);
-            secondAnimator.SetBool("walking", false);
-        }
+        transform.Rotate(0, rotationSpeed * hAxis * Time.deltaTime, 0);
 
-        theCC.Move(transform.forward * 5 * vAxis * Time.deltaTime);
+        //if (Mathf.Abs(vAxis) > 0)
+        //{
+        //    animator.SetBool("walking", true);
+        //    secondAnimator.SetBool("walking", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("walking", false);
+        //    secondAnimator.SetBool("walking", false);
+        //}
+
+        theCC.Move(transform.forward * speed * vAxis * Time.deltaTime);
+
 
     }
 

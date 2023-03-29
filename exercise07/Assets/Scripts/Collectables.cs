@@ -5,17 +5,20 @@ using TMPro;
 
 public class Collectables : MonoBehaviour
 {
-    static int score;
-    public TMP_Text scoreText;
-    public TMP_Text timerText;
 
+    ScoreManager sm;
+
+    void Start()
+    {
+
+        sm = GameObject.Find("Canvas").GetComponent<ScoreManager>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            score++;
-            SetScoreText();
+            sm.AddPointToScore();
 
             Destroy(this.gameObject);
 
@@ -23,8 +26,5 @@ public class Collectables : MonoBehaviour
 
     }
 
-    void SetScoreText()
-    {
-        scoreText.text = "Marshmallow(s) Collected: " + score;
-    }
+
 }
