@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController theCC;
     public float speed = 20;
     public float rotationSpeed = 90;
-    //public Animator animator;
-    //public Animator secondAnimator;
+    public Animator animator;
+   // public Animator secondAnimator;
 
 
     // Start is called before the first frame update
@@ -28,16 +28,16 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(0, rotationSpeed * hAxis * Time.deltaTime, 0);
 
-        //if (Mathf.Abs(vAxis) > 0)
-        //{
-        //    animator.SetBool("walking", true);
-        //    secondAnimator.SetBool("walking", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("walking", false);
-        //    secondAnimator.SetBool("walking", false);
-        //}
+        if (Mathf.Abs(vAxis) > 0)
+        {
+            animator.SetBool("walking", true);
+           // secondAnimator.SetBool("walking", true);
+        }
+        else
+        {
+            animator.SetBool("walking", false);
+           // secondAnimator.SetBool("walking", false);
+        }
 
         theCC.Move(transform.forward * speed * vAxis * Time.deltaTime);
 
